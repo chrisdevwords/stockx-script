@@ -1,0 +1,2 @@
+requests==2.20.1
+stockx-py-sdk==0.0.2
