@@ -1,0 +1,150 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-11-26T19:27:52.079Z",
+	"__export_source": "insomnia.desktop.app:v6.2.0",
+	"resources": [
+		{
+			"_id": "wrk_7b57eaf02008461d92b4a8bd3767b777",
+			"created": 1543085457386,
+			"description": "",
+			"modified": 1543085457386,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_842ab76ee5444d7abeaa7283829ccebd",
+			"color": null,
+			"created": 1543085457416,
+			"data": {
+				"api_base": "https://stockx.com/api",
+				"auth_token": "{% response 'header', 'req_7caaf018302a402985422cb27db0b125', 'jwt-authorization' %}",
+				"product_id": "34708656-e7f9-4384-92a6-03d05b4011c3",
+				"style_id": "BQ8448-100",
+				"user_email": "YOUR EMAIL",
+				"user_password": "YOUR_PASSWORD"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1543085457416,
+			"modified": 1543260422345,
+			"name": "New Environment",
+			"parentId": "wrk_7b57eaf02008461d92b4a8bd3767b777",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_5f95705126b247449549ddf0459ccef1",
+			"cookies": [
+				{
+					"creation": "2018-11-24T18:56:30.717Z",
+					"domain": "stockx.com",
+					"expires": "2019-11-24T18:56:30.000Z",
+					"hostOnly": false,
+					"httpOnly": true,
+					"id": "9651865618982964",
+					"key": "__cfduid",
+					"lastAccessed": "2018-11-24T18:56:30.717Z",
+					"path": "/",
+					"secure": true,
+					"value": "dde0efbc073739d3012164bc6be6fe4ad1543085790"
+				}
+			],
+			"created": 1543085457418,
+			"modified": 1543085790719,
+			"name": "Default Jar",
+			"parentId": "wrk_7b57eaf02008461d92b4a8bd3767b777",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_7caaf018302a402985422cb27db0b125",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"email\": \"{{ user_email  }}\",\n\t\"password\": \"{{ user_password  }}\"\n}"
+			},
+			"created": 1543085482715,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_0eccd440e2a34a779c4f1733c59f8eb9",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1543085482715,
+			"method": "POST",
+			"modified": 1543260435768,
+			"name": "Authenticate",
+			"parameters": [],
+			"parentId": "wrk_7b57eaf02008461d92b4a8bd3767b777",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_base  }}/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c9ed4b63c3664daca75e289c2ddc6db2",
+			"authentication": {},
+			"body": {},
+			"created": 1543085869557,
+			"description": "",
+			"headers": [
+				{
+					"disabled": false,
+					"id": "pair_3544f20369cf4f2d848d86c4cb7a5c4b",
+					"name": "JWT-Authorization",
+					"value": "{{ auth_token  }}"
+				},
+				{
+					"id": "pair_869dbc9773e446dc9e4b906ace64d3c5",
+					"name": "",
+					"value": ""
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1543085869557,
+			"method": "GET",
+			"modified": 1543260462996,
+			"name": "SalesActivity",
+			"parameters": [
+				{
+					"disabled": false,
+					"id": "pair_228a7061eaf24d6eaa0358b442839483",
+					"name": "state",
+					"value": "480"
+				},
+				{
+					"id": "pair_2192a00077d641478b22a22bcaaf9db8",
+					"name": "currency",
+					"value": "USD"
+				},
+				{
+					"disabled": true,
+					"id": "pair_1fba6c23b3cf402a9d6d1d3760155994",
+					"name": "start_date",
+					"value": "2018-11-23"
+				},
+				{
+					"disabled": true,
+					"id": "pair_b1cedb8725ce4d8f85615e4df14d10af",
+					"name": "end_date",
+					"value": "2018-11-24"
+				}
+			],
+			"parentId": "wrk_7b57eaf02008461d92b4a8bd3767b777",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_base  }}/products/{{ product_id  }}/activity",
+			"_type": "request"
+		}
+	]
+}
