@@ -1,5 +1,4 @@
 from argparse import ArgumentParser
-import json
 
 from stockxsdk import Stockx
 import xlwt
@@ -7,7 +6,6 @@ import xlwt
 
 # not sure about this, i think it's the right activity code
 ACTIVITY_TYPE_SOLD = "480"
-
 
 def write_size_report(file_name, sales):
     book = xlwt.Workbook()
@@ -37,6 +35,7 @@ if __name__ == "__main__":
     parser.add_argument("--size", help="Optionally restrict output to a single size.")
     parser.add_argument("--email", help="Email Address for your StockX account.")
     parser.add_argument("--password", help="Password for your StockX account.")
+    parser.add_argument("--file", help="Name and location of file. Defaults to style_id.xls.")
     args = parser.parse_args()
     logged_in = False
     auth_headers = {}
@@ -55,7 +54,7 @@ if __name__ == "__main__":
     print("Highest sale: ${localAmount} on {createdAt}".format(**sales[-1]))
     print("Lowest sale: ${localAmount} on {createdAt}".format(**sales[0]))
     print("Writing spreadshet...")
-    file_name = write_size_report(f"{args.style_id}.xls", sales)
+    file_name = args.file or f"{args.style_id}.xls"
+    write_size_report(file_name, sales)
     print(f"{file_name} saved.")
-    #print(json.dumps(sales, indent=True))
     exit(0)
